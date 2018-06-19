@@ -1,5 +1,6 @@
 import random
 from os import listdir
+from os import path
 from cltk.tokenize.line import LineTokenizer
 import tweepy
 from time import sleep
@@ -18,21 +19,25 @@ tokenizer = LineTokenizer('latin')
 #create list of lines
 whole_met = []
 
+list_of_files = sorted([file for file in listdir('la') if path.isfile(path.join('la/',file))])
+
 #iterate through files/books of Metamorphoses
-for file in sorted(listdir('ovid_metamorphoses')):
+for file in list_of_files:
 
-    #get text from each file
-    with open('ovid_metamorphoses/' + file) as f:
-        raw = f.read()
+    if file.startswith('ovid'):
 
-    #add line-tokenized text to the master list of lines
-    whole_met += tokenizer.tokenize(raw)
+        #get text from each file
+        with open('la/' + file) as f:
+            raw = f.read()
 
-try:
-    api.update_status(random.choice(whole_met))
-except tweepy.TweepError as e:
-    print(e.reason)
+            #add line-tokenized text to the master list of lines
+            whole_met += tokenizer.tokenize(raw)
+
+clean_met = [string.replace('\t',' ') for string in whole_met]
 
 while whole_met:
-    api.update_status(random.choice(whole_met))
-    sleep(21600)
+    try:
+        api.update_status(random.choice(clean_met))
+        sleep(21600)
+    except tweepy.TweepError as e:
+        print(e.reason)
