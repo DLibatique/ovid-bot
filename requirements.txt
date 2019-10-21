@@ -4,7 +4,7 @@ cltk==0.1.85
 gitdb2==2.0.3
 GitPython==2.1.10
 idna==2.7
-nltk==3.3
+nltk==3.4.5
 oauthlib==2.1.0
 PySocks==1.6.8
 python-crfsuite==0.9.5
