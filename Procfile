@@ -1,1 +1,1 @@
-worker: python ovidbot.py
+web: python server.py
