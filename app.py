@@ -1,13 +1,14 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
+from random import choice
+# from .twee import api
+from parser import clean_met
+
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', seconds=15)
-def timed_job():
-    print('This job is run every three minutes.')
-
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
-def scheduled_job():
-    print('This job is run every weekday at 5pm.')
+@sched.scheduled_job('interval', seconds=5)
+def tweet_line():
+    print(choice(clean_met))
+    # api.update_status(choice(clean_met))
 
 sched.start()
