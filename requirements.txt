@@ -1,3 +1,4 @@
+APScheduler==3.6.3
 beautifulsoup4==4.8.2
 bs4==0.0.1
 certifi==2018.4.16
@@ -19,6 +20,7 @@ psutil==5.6.6
 PySocks==1.7.1
 pyte==0.8.0
 python-crfsuite==0.9.7
+pytz==2019.3
 pyuca==1.2
 PyYAML==5.3.1
 regex==2020.2.20
@@ -29,6 +31,7 @@ smmap2==2.0.3
 soupsieve==2.0
 thefuck==3.29
 tweepy==3.8.0
+tzlocal==2.0.0
 urllib3==1.25.8
 wcwidth==0.1.7
 Werkzeug==1.0.0
