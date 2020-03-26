@@ -6,7 +6,7 @@ from parser import clean_met
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', hours=6)
+@sched.scheduled_job('interval', seconds=60)
 def tweet_line():
     print(choice(clean_met))
     api.update_status(choice(clean_met))
