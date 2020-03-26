@@ -5,6 +5,7 @@ from os import environ
 from cltk.tokenize.line import LineTokenizer
 import tweepy
 from time import sleep
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 #import Twitter credentials
 # from credentials import *
@@ -42,9 +43,15 @@ for file in list_of_files:
 
 clean_met = [string.replace('\t',' ') for string in whole_met]
 
-while whole_met:
-    try:
-        api.update_status(random.choice(clean_met))
-        sleep(21600)
-    except tweepy.TweepError as e:
-        print(e.reason)
+sched = BlockingScheduler()
+
+@sched.scheduled_job('interval', minutes=360)
+def tweet_line():
+    api.update_status(random.choice(clean_met))
+
+# while whole_met:
+#     try:
+#         api.update_status(random.choice(clean_met))
+#         sleep(21600)
+#     except tweepy.TweepError as e:
+#         print(e.reason)
