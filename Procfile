@@ -1,1 +1,1 @@
-clock: python ovidbot.py
+clock: python app.py
