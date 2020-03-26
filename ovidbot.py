@@ -49,6 +49,8 @@ sched = BlockingScheduler()
 def tweet_line():
     api.update_status(random.choice(clean_met))
 
+sched.start()
+
 # while whole_met:
 #     try:
 #         api.update_status(random.choice(clean_met))

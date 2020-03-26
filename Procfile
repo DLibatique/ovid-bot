@@ -1,1 +1,1 @@
-web: python server.py
+clock: python ovidbot.py
